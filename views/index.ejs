@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Web Scraper</title>
+		<!-- Bootstrape CSS -->
+		<link
+			rel="stylesheet"
+			href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+			integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+			crossorigin="anonymous"
+		/>
+	</head>
+	<body style="background-color: #273746">
+		<div class="container mt-5" style="text-align: center">
+			<!-- Initial -->
+			<h1 style="color: #fff">Fetch URL Preview</h1>
+			<br />
+			<div class="input-group mb-3">
+				<div class="input-group-prepend">
+					<span class="input-group-text">http://</span>
+				</div>
+				<input
+					type="text"
+					class="form-control"
+					placeholder="Website URL e.g: www.google.com"
+					aria-label="Recipient's username"
+					aria-describedby="button-addon2"
+					id="url"
+				/>
+				<div class="input-group-append">
+					<button
+						class="btn btn-outline-primary"
+						type="button"
+						id="button-addon2"
+						onclick="requestPreview()"
+					>
+						Get Preview
+					</button>
+				</div>
+			</div>
+
+			<% if (data) { %>
+			<!-- After Fetching -->
+			<div style="margin-top: 150px">
+				<h1 style="color: #fff"><%= data.name %></h1>
+				<br />
+				<div class="card mb-3" style="max-width: 540px; margin: 0 auto">
+					<div class="row no-gutters">
+						<div class="col-md-4">
+							<img src="<%= data.img %>" class="card-img" alt="Image" />
+						</div>
+						<div class="col-md-8">
+							<div class="card-body">
+								<h5 class="card-title"><%= data.title %></h5>
+								<p class="card-text" style="text-align: justify">
+									<%= data.desc %>
+									<br />
+									<small class="text-muted"><%= data.url %></small>
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<% } %>
+		</div>
+
+		<!-- Bootstrap JS -->
+		<script
+			src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+			integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+			crossorigin="anonymous"
+		></script>
+		<script
+			src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+			integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+			crossorigin="anonymous"
+		></script>
+		<script
+			src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+			integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+			crossorigin="anonymous"
+		></script>
+		<script>
+			function requestPreview() {
+				window.location.href =
+					window.location.origin + "?url=" + document.getElementById("url").value;
+			}
+		</script>
+	</body>
+</html>
