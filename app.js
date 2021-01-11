@@ -46,12 +46,12 @@ app.get("/", async (req, res) => {
 				name,
 				title,
 				desc,
-				img,
-				url,
+				img
 			};
 		});
 
 		console.log("Data Recieved!");
+		data.url = url;
 		res.render("index", { data: data });
 		await browser.close();
 	}
